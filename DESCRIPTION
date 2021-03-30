@@ -1,0 +1,24 @@
+Package: rondo
+Type: Package
+Title: Analytical Calculation Of Groundwater Flow In a Single Aquifer Under Circular Shaped Polders
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Kees",
+           family = "van Immerzeel",
+           role = c("aut", "cre"),
+           email = "c.h.van.immerzeel@gmail.com",
+           comment = c(ORCID = "https://orcid.org/0000-0003-0926-3248"))
+Maintainer: Kees van Immerzeel <c.h.van.immerzeel@gmail.com>
+Description: Analytical Calculation Of Groundwater Flow In a Single Aquifer Under Circular Shaped Polders.
+    Based on the publication "Wegzijging en kwel; de grondwaterstroming van hogere naar lagere gebieden".
+    L.F. Ernst. I.C.W.-rapport nr. 7 (1983).
+License: Artistic-2.0
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    magrittr,
+    stats
+Depends: 
+    R (>= 4.0)
