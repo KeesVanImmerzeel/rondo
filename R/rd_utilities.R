@@ -175,11 +175,29 @@ rd_init <- function(kD, c, r, h) {
 #' h <- c(10, 9, 8)
 #' y <- rd_init(kD, c, r, h)
 #' x <- 500
+#' .rd_phi(x, y)
+.rd_phi <- function(x, y) {
+  y <- .get_coeff(x, y)
+  y$Ai * besselI(y$rl, 0) + y$Bi * besselK(y$rl, 0) + y$h
+}
+
+#' Calculate the head at radius x (numeric vector).
+#'
+#' @inheritParams .get_coeff
+#' @param x Radius (m) (numeric vector).
+#' @return Head at radius x (m) (numeric vector).
+#' @examples
+#' kD <- c(1000, 1000, 1000)
+#' c <- c(1000, 2000, 3000)
+#' r <- c(1000, 2000)
+#' h <- c(10, 9, 8)
+#' y <- rd_init(kD, c, r, h)
+#' x <- seq(0,3000,by=100)
 #' rd_phi(x, y)
 #' @export
 rd_phi <- function(x, y) {
-  y <- .get_coeff(x, y)
-  y$Ai * besselI(y$rl, 0) + y$Bi * besselK(y$rl, 0) + y$h
+  .f <- Vectorize(.rd_phi,vectorize.args="x")
+  .f(x,y)
 }
 
 #' Calculate the lateral discharge at radius x.
@@ -193,11 +211,28 @@ rd_phi <- function(x, y) {
 #' h <- c(10, 9, 8)
 #' y <- rd_init(kD, c, r, h)
 #' x <- 500
+#' .rd_q(x, y)
+.rd_q <- function(x, y) {
+  y <- .get_coeff(x, y)
+  - 2 * pi * y$kDl * x * (y$Ai * besselI(y$rl, 1) - y$Bi * besselK(y$rl, 1))
+}
+
+#' Calculate the lateral discharge at radius x (numeric vector).
+#'
+#' @inheritParams rd_phi
+#' @return Lateral discharge (m3/d) (numeric).
+#' @examples
+#' kD <- c(1000, 1000, 1000)
+#' c <- c(1000, 2000, 3000)
+#' r <- c(1000, 2000)
+#' h <- c(10, 9, 8)
+#' y <- rd_init(kD, c, r, h)
+#' x <- seq(0,3000,by=100)
 #' rd_q(x, y)
 #' @export
 rd_q <- function(x, y) {
-  y <- .get_coeff(x, y)
-  - 2 * pi * y$kDl * x * (y$Ai * besselI(y$rl, 1) - y$Bi * besselK(y$rl, 1))
+  .f <- Vectorize(.rd_q,vectorize.args="x")
+  .f(x,y)
 }
 
 #' Internal function to determine if the radius x corresponds with a area boundary.
@@ -208,7 +243,6 @@ rd_q <- function(x, y) {
 .is_on_border <- function(x, r){
   which(r==x) %>% length() == 1
 }
-
 
 #' Calculate the seepage intensity at radius x.
 #'
@@ -222,9 +256,8 @@ rd_q <- function(x, y) {
 #' h <- c(10, 9, 8)
 #' y <- rd_init(kD, c, r, h)
 #' x <- 500
-#' rd_seep(x, y)
-#' @export
-rd_seep <- function(x, y) {
+#' .rd_seep(x, y)
+.rd_seep <- function(x, y) {
   if (!.is_on_border(x, y$r)) {
     phi <- rd_phi(x, y)
     y <- .get_coeff(x, y)
@@ -234,6 +267,25 @@ rd_seep <- function(x, y) {
     s2 <- rd_seep(x + .01, y)
     mean(c(s1,s2))
   }
+}
+
+#' Calculate the seepage intensity at radius x.
+#'
+#' @inheritParams rd_phi
+#' @return Seepage intensity (m/d) (numeric).
+#' @details Positive = downwards flow; negative = upwards flow.
+#' @examples
+#' kD <- c(1000, 1000, 1000)
+#' c <- c(1000, 2000, 3000)
+#' r <- c(1000, 2000)
+#' h <- c(10, 9, 8)
+#' y <- rd_init(kD, c, r, h)
+#' x <- seq(0,3000,by=100)
+#' rd_seep(x, y)
+#' @export
+rd_seep <- function(x, y){
+  .f <- Vectorize(.rd_seep,vectorize.args="x")
+  .f(x,y)
 }
 
 #' Calculate the average seepage intensity between radius r1 and r2.

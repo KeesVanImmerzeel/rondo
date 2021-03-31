@@ -2,12 +2,12 @@
 % Please edit documentation in R/rd_utilities.R
 \name{rd_q}
 \alias{rd_q}
-\title{Calculate the lateral discharge at radius x.}
+\title{Calculate the lateral discharge at radius x (numeric vector).}
 \usage{
 rd_q(x, y)
 }
 \arguments{
-\item{x}{Radius (m) (numeric).}
+\item{x}{Radius (m) (numeric vector).}
 
 \item{y}{List with parameters used for the calculations of the groundwater heads and fluxes.}
 }
@@ -15,7 +15,7 @@ rd_q(x, y)
 Lateral discharge (m3/d) (numeric).
 }
 \description{
-Calculate the lateral discharge at radius x.
+Calculate the lateral discharge at radius x (numeric vector).
 }
 \examples{
 kD <- c(1000, 1000, 1000)
@@ -23,6 +23,6 @@ c <- c(1000, 2000, 3000)
 r <- c(1000, 2000)
 h <- c(10, 9, 8)
 y <- rd_init(kD, c, r, h)
-x <- 500
+x <- seq(0,3000,by=100)
 rd_q(x, y)
 }

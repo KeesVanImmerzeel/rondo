@@ -23,11 +23,25 @@ Then load the package with:
 - `rd_seep()`: Calculate the seepage intensity at radius x.
 - `av_seep()`: Calculate the average seepage intensity between radius r1 and r2.
 
-
 ## Get help
 
 To get help on the functions in this package type a question mark before the function name, like `?rd_init`
 
+## Example usage
+
+`kD <- c(1000, 1000, 1000)`
+
+`c <- c(1000, 2000, 3000)`
+
+`r <- c(1000, 2000)`
+
+`h <- c(10, 9, 8)`
+
+`y <- rd_init(kD, c, r, h)`
+
+`x <- seq(0, 3000, by = 100)`
+
+`plot(x, rd_phi(x,y))`
 
 # References
 
