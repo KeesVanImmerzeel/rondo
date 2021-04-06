@@ -12,7 +12,6 @@ C.H. van Immerzeel, Internationale Agrarische Hogeschool Larenstein Velp (1990).
 Cited literature:
 
 \href{https://edepot.wur.nl/184522}{Repport "Steady Flow of Groundwater Towards Wells" TNO (1964).}
-\href{https://edepot.wur.nl/192343}{Repport "Wegzijging en kwel" L.F. Ernst (1983).}
 
 This package exports the following functions:
 \itemize{
