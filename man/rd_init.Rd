@@ -13,7 +13,7 @@ rd_init(kD, c, r, h)
 
 \item{r}{Radius of areas (m) (numeric vector).}
 
-\item{h}{Polder heads in the different areas (m) (numeric vector).}
+\item{h}{Polder level in the different areas (m) (numeric vector).}
 }
 \value{
 List with parameters used for the calculations of the groundwater heads and fluxes.

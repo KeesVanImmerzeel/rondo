@@ -7,7 +7,7 @@
 .create_b_vector(h)
 }
 \arguments{
-\item{h}{Polder heads in the different areas (m) (numeric vector).}
+\item{h}{Polder level in the different areas (m) (numeric vector).}
 }
 \value{
 right hand vector b in the linear equations.

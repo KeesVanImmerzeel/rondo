@@ -88,7 +88,7 @@
 
 #' Internal function to create the right hand vector b in the linear equations.
 #'
-#' @param h Polder heads in the different areas (m) (numeric vector).
+#' @param h Polder level in the different areas (m) (numeric vector).
 #' @return right hand vector b in the linear equations.
 #' @details The length of the vector h should be equal to the length of the vectors kD and c.
 .create_b_vector <- function(h) {
