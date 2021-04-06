@@ -48,5 +48,3 @@ To get help on the functions in this package type a question mark before the fun
 1. *Steady flow of ground water towards wells*
 Comm. voor Hydrologisch Onderzoek T.N.O. Verslagen en mededelingen No. 10 (1964).
 
-2. *Wegzijging en kwel* 
-De grondwaterstroming van hogere naar lagere gebieden. L.F. Ernst, I.C.W.-rapport nr. 7 (1983).

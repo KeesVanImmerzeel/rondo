@@ -1,4 +1,3 @@
-
 #' Internal function to determine the number of areas for which kD- and c-values are specified.
 #'
 #' @param kD Transmissivity (m2/d) (numeric vector).
